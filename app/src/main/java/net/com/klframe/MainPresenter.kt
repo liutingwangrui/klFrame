@@ -18,12 +18,12 @@ class MainPresenter: BasePresenter<MainView>() {
      */
     fun login(userName:String,pwd:String){
 
-        resultApi.loginApi(userName,pwd).excute(object : BaseSubscriber<BaseRsp<LoginBean>>() {
+        resultApi.loginApi(userName,pwd).excute(object : BaseSubscriber<BaseRsp<LoginBean>>(mView) {
             override fun onNext(t: BaseRsp<LoginBean>) {
                 if (t.statu==200){
                     mView.onLoginSuccess(t.data)
                 }else{
-                    mView.onError()
+                    mView.onError(t.msg)
                 }
             }
         })

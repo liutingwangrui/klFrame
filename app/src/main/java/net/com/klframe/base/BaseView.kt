@@ -6,5 +6,5 @@ package net.com.klframe.base
 interface BaseView {
     fun showLoading()
     fun hideLoading()
-    fun onError()
+    fun onError(s:String)
 }
